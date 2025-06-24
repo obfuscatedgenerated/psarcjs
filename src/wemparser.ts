@@ -115,6 +115,6 @@ export const WEMDATA: Parser<any> = new Parser()
     });
 
 export async function convert(wavFile: string, tag: string): Promise<string> {
-    console.warn("WEMParser.convert is not yet implemented and will return an empty string. Consider using something like ww2ogg or https://www.npmjs.com/package/node-wwriff to convert to ogg.")
+    console.warn("WEMParser.convert is not yet implemented and will return an empty string. Consider using something like ww2ogg or https://github.com/obfuscatedgenerated/node-wwriff to convert to ogg.")
     return "";
 }

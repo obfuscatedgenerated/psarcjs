@@ -146,7 +146,7 @@ exports.WEMDATA = new binary_parser_1.Parser()
 function convert(wavFile, tag) {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {
-            console.warn("WEMParser.convert is not yet implemented and will return an empty string. Consider using something like ww2ogg or https://www.npmjs.com/package/node-wwriff to convert to ogg.");
+            console.warn("WEMParser.convert is not yet implemented and will return an empty string. Consider using something like ww2ogg or https://github.com/obfuscatedgenerated/node-wwriff to convert to ogg.");
             return [2 /*return*/, ""];
         });
     });
