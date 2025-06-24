@@ -5,11 +5,11 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "python3 test/sng/generate-sng-json.py && mocha --bail -r ts-node/register --reporter spec test/*.ts",
-    "posttest": "rm -rf test/xml/*.sng && rm -rf test/sng/*.sng.json",
+    "posttest": "rimraf test/xml/*.sng && rm -rf test/sng/*.sng.json",
     "drypack": "npm pack && tar -xvzf *.tgz && rm -rf package *.tgz",
     "cover": "python3 test/sng/generate-sng-json.py && c8 --reporter=lcov mocha -r ts-node/register --reporter spec test/*.ts",
-    "postcover": "rm -rf test/xml/*.sng && rm -rf test/sng/*.sng.json",
-    "build": "tsc --build --pretty"
+    "postcover": "rimraf test/xml/*.sng && rm -rf test/sng/*.sng.json",
+    "build": "rimraf dist && tsc --build --pretty"
   },
   "repository": {
     "type": "git",
@@ -64,6 +64,7 @@
     "coveralls": "^3.0.9",
     "mocha": "^6.2.2",
     "mocha-each": "^2.0.1",
+    "rimraf": "^6.0.1",
     "tmp": "^0.1.0",
     "ts-node": "^8.5.4",
     "typescript": "^3.7.3"
