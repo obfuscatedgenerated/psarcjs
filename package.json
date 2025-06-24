@@ -1,5 +1,5 @@
 {
-  "name": "@sandiz/psarcjs",
+  "name": "psarcjs",
   "version": "1.3.2",
   "description": "node.js module to read and extract Rocksmith PSARC files",
   "main": "dist/index.js",
