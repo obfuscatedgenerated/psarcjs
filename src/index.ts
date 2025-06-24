@@ -11,6 +11,8 @@ import {
 } from './song2014';
 import { DEFAULT_VALUES } from './common';
 
+import * as BNKParser from './bnkparser';
+
 export {
     PSARC,
     SNG,
@@ -24,4 +26,5 @@ export {
     SongNote,
     MANIFEST,
     DEFAULT_VALUES,
+    BNKParser,
 }
