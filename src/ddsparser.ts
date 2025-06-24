@@ -1,6 +1,7 @@
 import { promises } from 'fs';
 import { Parser } from 'binary-parser';
-import * as imagemagick from 'imagemagick-native'
+// import * as imagemagick from 'imagemagick-native';
+import * as im from 'imagemagick';
 const path = require('path');
 /*
 //import * as dxt from 'dxt-js';
@@ -50,12 +51,26 @@ export async function convert(image: string, tag: string): Promise<string[]> {
     for (let i = 0; i < res.length; i += 1) {
         const r = res[i];
         const out = path.dirname(image) + `/album_${tag}_${r}.dds`;
-        await promises.writeFile(out, imagemagick.convert({
-            srcData: await promises.readFile(image),
-            format: 'DDS',
-            width: r,
-            height: r,
+
+        // await promises.writeFile(out, imagemagick.convert({
+        //     srcData: await promises.readFile(image),
+        //     format: 'DDS',
+        //     width: r,
+        //     height: r,
+        // }));
+
+        // promisified call to imagemagick cli
+        // probably unsafe but better than using imagemagick-native :shrug:
+        await new Promise(((resolve, reject) => {
+            im.convert([image, "-resize", `${r}x${r}`, out], (err: any, stdout: any) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(stdout);
+                }
+            });
         }));
+
         outfiles.push(out);
     }
 
