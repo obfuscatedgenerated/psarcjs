@@ -36,9 +36,8 @@
     "binary-parser": "git+https://github.com/psarcjs-forks/binary-parser.git",
     "fs-extra": "^8.1.0",
     "globby": "^10.0.1",
-    "imagemagick-native": "git+https://github.com/obfuscatedgenerated/node-imagemagick-native.git",
     "js-crc32": "^1.0.1",
-    "ogg": "git+https://github.com/psarcjs-forks/node-ogg.git",
+    "ogg": "github:obfuscatedgenerated/node-ogg",
     "waapi": "^2017.2.0",
     "waapi-client": "^2017.2.1",
     "xml2js": "git+https://github.com/psarcjs-forks/node-xml2js.git"
@@ -50,7 +49,6 @@
     "@types/chai-arrays": "^1.0.3",
     "@types/chai-fs": "^2.0.2",
     "@types/fs-extra": "^8.0.1",
-    "@types/imagemagick-native": "^1.7.29",
     "@types/mocha": "^5.2.7",
     "@types/mocha-each": "^1.1.0",
     "@types/node": "^12.12.17",
