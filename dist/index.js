@@ -1,26 +1,25 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.DEFAULT_VALUES = exports.MANIFEST = exports.SongNote = exports.SongEbeat = exports.Song2014 = exports.BNK = exports.GENERIC = exports.WAAPI = exports.WEM = exports.DDS = exports.SNG = exports.PSARC = void 0;
 var sng_1 = require("./sng");
+Object.defineProperty(exports, "SNG", { enumerable: true, get: function () { return sng_1.SNG; } });
 var dds_1 = require("./dds");
+Object.defineProperty(exports, "DDS", { enumerable: true, get: function () { return dds_1.DDS; } });
 var wem_1 = require("./wem");
+Object.defineProperty(exports, "WEM", { enumerable: true, get: function () { return wem_1.WEM; } });
 var bnk_1 = require("./bnk");
+Object.defineProperty(exports, "BNK", { enumerable: true, get: function () { return bnk_1.BNK; } });
 var waapi_1 = require("./waapi");
+Object.defineProperty(exports, "WAAPI", { enumerable: true, get: function () { return waapi_1.WAAPI; } });
 var generic_1 = require("./generic");
+Object.defineProperty(exports, "GENERIC", { enumerable: true, get: function () { return generic_1.GENERIC; } });
 var manifest_1 = require("./manifest");
+Object.defineProperty(exports, "MANIFEST", { enumerable: true, get: function () { return manifest_1.MANIFEST; } });
 var psarc_1 = require("./psarc");
+Object.defineProperty(exports, "PSARC", { enumerable: true, get: function () { return psarc_1.PSARC; } });
 var song2014_1 = require("./song2014");
+Object.defineProperty(exports, "SongEbeat", { enumerable: true, get: function () { return song2014_1.SongEbeat; } });
+Object.defineProperty(exports, "SongNote", { enumerable: true, get: function () { return song2014_1.SongNote; } });
+Object.defineProperty(exports, "Song2014", { enumerable: true, get: function () { return song2014_1.Song2014; } });
 var common_1 = require("./common");
-module.exports = {
-    PSARC: psarc_1.PSARC,
-    SNG: sng_1.SNG,
-    DDS: dds_1.DDS,
-    WEM: wem_1.WEM,
-    WAAPI: waapi_1.WAAPI,
-    GENERIC: generic_1.GENERIC,
-    BNK: bnk_1.BNK,
-    Song2014: song2014_1.Song2014,
-    SongEbeat: song2014_1.SongEbeat,
-    SongNote: song2014_1.SongNote,
-    MANIFEST: manifest_1.MANIFEST,
-    DEFAULT_VALUES: common_1.DEFAULT_VALUES,
-};
+Object.defineProperty(exports, "DEFAULT_VALUES", { enumerable: true, get: function () { return common_1.DEFAULT_VALUES; } });

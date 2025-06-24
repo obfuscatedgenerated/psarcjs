@@ -11,7 +11,7 @@ import {
 } from './song2014';
 import { DEFAULT_VALUES } from './common';
 
-module.exports = {
+export {
     PSARC,
     SNG,
     DDS,
