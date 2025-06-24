@@ -74,6 +74,13 @@ var BNK = /** @class */ (function () {
             });
         });
     };
+    BNK.parseData = function (data) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, BNKParser.BNKDATA.parse(data)];
+            });
+        });
+    };
     BNK.generate = function (wemFile, tag, copyWem, dir, preview) {
         if (preview === void 0) { preview = false; }
         return __awaiter(this, void 0, void 0, function () {
