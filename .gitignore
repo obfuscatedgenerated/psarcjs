@@ -64,3 +64,6 @@ test/sng/*.json
 test/dds/*.dds
 test/xml/*.json
 test/xml/*.sng
+
+.idea
+*.iml

@@ -8,8 +8,7 @@
 node.js v12 module to read/write Rocksmith PSARC and other related files
 
 ## Installation
-    npm install @sandiz/psarcjs (github registry)
-    npm install psarcjs         (npm registry)
+    npm install https://github.com/obfuscatedgenerated/psarcjs.git
 
 ## Usage
 ```JavaScript
