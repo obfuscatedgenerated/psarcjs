@@ -19,7 +19,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.BNKParser = exports.DEFAULT_VALUES = exports.MANIFEST = exports.SongNote = exports.SongEbeat = exports.Song2014 = exports.BNK = exports.GENERIC = exports.WAAPI = exports.WEM = exports.DDS = exports.SNG = exports.PSARC = void 0;
+exports.WEMParser = exports.BNKParser = exports.DEFAULT_VALUES = exports.MANIFEST = exports.SongNote = exports.SongEbeat = exports.Song2014 = exports.BNK = exports.GENERIC = exports.WAAPI = exports.WEM = exports.DDS = exports.SNG = exports.PSARC = void 0;
 var sng_1 = require("./sng");
 Object.defineProperty(exports, "SNG", { enumerable: true, get: function () { return sng_1.SNG; } });
 var dds_1 = require("./dds");
@@ -44,3 +44,5 @@ var common_1 = require("./common");
 Object.defineProperty(exports, "DEFAULT_VALUES", { enumerable: true, get: function () { return common_1.DEFAULT_VALUES; } });
 var BNKParser = __importStar(require("./bnkparser"));
 exports.BNKParser = BNKParser;
+var WEMParser = __importStar(require("./wemparser"));
+exports.WEMParser = WEMParser;

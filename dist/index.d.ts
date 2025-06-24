@@ -9,4 +9,5 @@ import { PSARC } from './psarc';
 import { SongEbeat, SongNote, Song2014 } from './song2014';
 import { DEFAULT_VALUES } from './common';
 import * as BNKParser from './bnkparser';
-export { PSARC, SNG, DDS, WEM, WAAPI, GENERIC, BNK, Song2014, SongEbeat, SongNote, MANIFEST, DEFAULT_VALUES, BNKParser, };
+import * as WEMParser from './wemparser';
+export { PSARC, SNG, DDS, WEM, WAAPI, GENERIC, BNK, Song2014, SongEbeat, SongNote, MANIFEST, DEFAULT_VALUES, BNKParser, WEMParser };

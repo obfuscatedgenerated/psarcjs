@@ -11,4 +11,8 @@ export class WEM {
         const data = await promises.readFile(wemFile);
         return WEMParser.WEMDATA.parse(data);
     }
+
+    static async parseData(data: Buffer) {
+        return WEMParser.WEMDATA.parse(data);
+    }
 }

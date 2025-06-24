@@ -12,6 +12,7 @@ import {
 import { DEFAULT_VALUES } from './common';
 
 import * as BNKParser from './bnkparser';
+import * as WEMParser from './wemparser';
 
 export {
     PSARC,
@@ -27,4 +28,5 @@ export {
     MANIFEST,
     DEFAULT_VALUES,
     BNKParser,
+    WEMParser
 }

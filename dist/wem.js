@@ -88,6 +88,13 @@ var WEM = /** @class */ (function () {
             });
         });
     };
+    WEM.parseData = function (data) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, WEMParser.WEMDATA.parse(data)];
+            });
+        });
+    };
     return WEM;
 }());
 exports.WEM = WEM;
