@@ -36,9 +36,10 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.convert = exports.WEMDATA = exports.FORMAT = exports.SETUPPACKET = exports.PACKET = exports.DATA = exports.HEADER = void 0;
 var binary_parser_1 = require("binary-parser");
 exports.HEADER = new binary_parser_1.Parser()
-    .endianess("little")
+    .endianness("little")
     .string("magic", {
     length: 4,
     assert: 'RIFF',
@@ -49,12 +50,12 @@ exports.HEADER = new binary_parser_1.Parser()
     assert: 'WAVE',
 });
 exports.DATA = new binary_parser_1.Parser()
-    .endianess("little");
+    .endianness("little");
 exports.PACKET = new binary_parser_1.Parser()
-    .endianess("little")
+    .endianness("little")
     .int16("packet_size")
     .nest("first", {
-    type: new binary_parser_1.Parser().endianess("little")
+    type: new binary_parser_1.Parser().endianness("little")
         .bit1("mode_number").bit7("remainder")
 })
     //.int32("first")
@@ -65,7 +66,7 @@ exports.PACKET = new binary_parser_1.Parser()
     }
 });
 exports.SETUPPACKET = new binary_parser_1.Parser()
-    .endianess("little")
+    .endianness("little")
     .bit8("codebook_count")
     .buffer("codebook_ids", {
     length: function () {
@@ -73,7 +74,7 @@ exports.SETUPPACKET = new binary_parser_1.Parser()
     },
 });
 exports.FORMAT = new binary_parser_1.Parser()
-    .endianess("little")
+    .endianness("little")
     .string("fmtMagic", {
     length: 4,
     assert: 'fmt ',
@@ -135,7 +136,7 @@ exports.FORMAT = new binary_parser_1.Parser()
     }
 });
 exports.WEMDATA = new binary_parser_1.Parser()
-    .endianess("little")
+    .endianness("little")
     .nest("header", {
     type: exports.HEADER,
 })

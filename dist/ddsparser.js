@@ -1,4 +1,23 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -35,17 +54,11 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-    result["default"] = mod;
-    return result;
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-var fs_1 = require("fs");
+exports.convert = exports.HEADER = void 0;
 var binary_parser_1 = require("binary-parser");
-var imagemagick = __importStar(require("imagemagick-native"));
+// import * as imagemagick from 'imagemagick-native';
+var im = __importStar(require("imagemagick"));
 var path = require('path');
 /*
 //import * as dxt from 'dxt-js';
@@ -54,7 +67,7 @@ const nextPo2 = require('next-power-of-two')
 const sharp = require('sharp');
 */
 exports.HEADER = new binary_parser_1.Parser()
-    .endianess("little")
+    .endianness("little")
     .string("MAGIC", {
     encoding: "ascii",
     zeroTerminated: false,
@@ -89,36 +102,64 @@ exports.HEADER = new binary_parser_1.Parser()
     .uint32("reserved2");
 function convert(image, tag) {
     return __awaiter(this, void 0, void 0, function () {
-        var res, outfiles, i, r, out, _a, _b, _c, _d, _e, _f;
-        return __generator(this, function (_g) {
-            switch (_g.label) {
+        var res, outfiles, _loop_1, i;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
                 case 0:
                     res = [64, 128, 256];
                     outfiles = [];
+                    _loop_1 = function (i) {
+                        var r, out;
+                        return __generator(this, function (_a) {
+                            switch (_a.label) {
+                                case 0:
+                                    r = res[i];
+                                    out = path.dirname(image) + ("/album_" + tag + "_" + r + ".dds");
+                                    // await promises.writeFile(out, imagemagick.convert({
+                                    //     srcData: await promises.readFile(image),
+                                    //     format: 'DDS',
+                                    //     width: r,
+                                    //     height: r,
+                                    // }));
+                                    // promisified call to imagemagick cli
+                                    // probably unsafe but better than using imagemagick-native :shrug:
+                                    return [4 /*yield*/, new Promise((function (resolve, reject) {
+                                            im.convert([image, "-resize", r + "x" + r, out], function (err, stdout) {
+                                                if (err) {
+                                                    reject(err);
+                                                }
+                                                else {
+                                                    resolve(stdout);
+                                                }
+                                            });
+                                        }))];
+                                case 1:
+                                    // await promises.writeFile(out, imagemagick.convert({
+                                    //     srcData: await promises.readFile(image),
+                                    //     format: 'DDS',
+                                    //     width: r,
+                                    //     height: r,
+                                    // }));
+                                    // promisified call to imagemagick cli
+                                    // probably unsafe but better than using imagemagick-native :shrug:
+                                    _a.sent();
+                                    outfiles.push(out);
+                                    return [2 /*return*/];
+                            }
+                        });
+                    };
                     i = 0;
-                    _g.label = 1;
+                    _a.label = 1;
                 case 1:
-                    if (!(i < res.length)) return [3 /*break*/, 5];
-                    r = res[i];
-                    out = path.dirname(image) + ("/album_" + tag + "_" + r + ".dds");
-                    _b = (_a = fs_1.promises).writeFile;
-                    _c = [out];
-                    _e = (_d = imagemagick).convert;
-                    _f = {};
-                    return [4 /*yield*/, fs_1.promises.readFile(image)];
-                case 2: return [4 /*yield*/, _b.apply(_a, _c.concat([_e.apply(_d, [(_f.srcData = _g.sent(),
-                                _f.format = 'DDS',
-                                _f.width = r,
-                                _f.height = r,
-                                _f)])]))];
+                    if (!(i < res.length)) return [3 /*break*/, 4];
+                    return [5 /*yield**/, _loop_1(i)];
+                case 2:
+                    _a.sent();
+                    _a.label = 3;
                 case 3:
-                    _g.sent();
-                    outfiles.push(out);
-                    _g.label = 4;
-                case 4:
                     i += 1;
                     return [3 /*break*/, 1];
-                case 5: return [2 /*return*/, outfiles];
+                case 4: return [2 /*return*/, outfiles];
             }
         });
     });

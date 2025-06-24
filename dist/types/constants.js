@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.SNGConstants = exports.maskPrinter = void 0;
 function maskPrinter(n) {
     var validMasks = [];
     var keys = Object.keys(exports.SNGConstants);

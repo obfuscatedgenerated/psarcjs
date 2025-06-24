@@ -1,4 +1,23 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -35,14 +54,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-    result["default"] = mod;
-    return result;
-};
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Disconnect = exports.getPlatforms = exports.Convert = void 0;
 var waapi = __importStar(require("waapi-client"));
 var waapi_1 = require("waapi");
 var path_1 = require("path");
@@ -62,8 +75,7 @@ var waitForProjectLoad = function () { return __awaiter(void 0, void 0, void 0, 
                         case 0:
                             if (!connection) return [3 /*break*/, 2];
                             return [4 /*yield*/, connection.subscribe(waapi_1.ak.wwise.core.project.loaded, function () {
-                                    var _a;
-                                    (_a = connection) === null || _a === void 0 ? void 0 : _a.unsubscribe(subscription_1);
+                                    connection === null || connection === void 0 ? void 0 : connection.unsubscribe(subscription_1);
                                     resolve();
                                 }, {})];
                         case 1:
@@ -87,8 +99,7 @@ var waitForProjectClosed = function () { return __awaiter(void 0, void 0, void 0
                         case 0:
                             if (!connection) return [3 /*break*/, 2];
                             return [4 /*yield*/, connection.subscribe(waapi_1.ak.wwise.core.project.postClosed, function () {
-                                    var _a;
-                                    (_a = connection) === null || _a === void 0 ? void 0 : _a.unsubscribe(subscription_2);
+                                    connection === null || connection === void 0 ? void 0 : connection.unsubscribe(subscription_2);
                                     resolve();
                                 }, {})];
                         case 1:
@@ -115,8 +126,7 @@ var waitForCommandExecuted = function (args) { return __awaiter(void 0, void 0, 
                         case 1:
                             p = _a.sent();
                             return [4 /*yield*/, connection.subscribe("ak.wwise.ui.commands.executed", function (e, f) {
-                                    var _a;
-                                    (_a = connection) === null || _a === void 0 ? void 0 : _a.unsubscribe(subscription_3);
+                                    connection === null || connection === void 0 ? void 0 : connection.unsubscribe(subscription_3);
                                     resolve(f);
                                 }, {})];
                         case 2:

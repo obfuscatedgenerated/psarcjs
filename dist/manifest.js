@@ -47,6 +47,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.MANIFEST = void 0;
 var fs_1 = require("fs");
 var path_1 = require("path");
 var common_1 = require("./types/common");

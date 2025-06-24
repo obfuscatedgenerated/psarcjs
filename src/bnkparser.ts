@@ -5,7 +5,7 @@ import { join } from 'path';
 import { copy } from 'fs-extra';
 
 export const HEADER = new Parser()
-    .endianess("little")
+    .endianness("little")
     .string("magic", {
         length: 4,
     })
@@ -19,7 +19,7 @@ export const HEADER = new Parser()
     })
 
 export const DIDX = new Parser()
-    .endianess("little")
+    .endianness("little")
     .string("magic", {
         length: 4,
     })
@@ -29,7 +29,7 @@ export const DIDX = new Parser()
     .int32("fileSize")
 
 export const DATA = new Parser()
-    .endianess("little")
+    .endianness("little")
     .string("magic", {
         length: 4,
     })
@@ -39,7 +39,7 @@ export const DATA = new Parser()
     })
 
 export const HIRCSOUND = new Parser()
-    .endianess("little")
+    .endianness("little")
     .uint32("soundID")
     .uint32("pluginID")
     .uint32("streamType")
@@ -81,7 +81,7 @@ export const HIRCSOUND = new Parser()
     .int32("feedbackBus")
 
 export const HIRCACTORMIXER = new Parser()
-    .endianess("little")
+    .endianness("little")
     .uint32("mixerID")
     .int8("overrideParent")
     .int8("numFX")
@@ -112,7 +112,7 @@ export const HIRCACTORMIXER = new Parser()
     .int32("child1")
 
 export const HIRCACTION = new Parser()
-    .endianess("little")
+    .endianness("little")
     .int32("actionID")
     .int16("actionType")
     .int32("objectID")
@@ -123,13 +123,13 @@ export const HIRCACTION = new Parser()
     .int32("soundbankID")
 
 export const HIRCEVENT = new Parser()
-    .endianess("little")
+    .endianness("little")
     .int32("eventID")
     .int32("numEvents")
     .int32("actionID")
 
 export const HIERARCHY = new Parser()
-    .endianess("little")
+    .endianness("little")
     .string("magic", {
         length: 4,
     })
@@ -157,7 +157,7 @@ export const HIERARCHY = new Parser()
     })
 
 export const STID = new Parser()
-    .endianess("little")
+    .endianness("little")
     .string("magic", {
         length: 4,
     })
@@ -172,7 +172,7 @@ export const STID = new Parser()
     })
 
 export const BNKDATA = new Parser()
-    .endianess("little")
+    .endianness("little")
     .nest("header", {
         type: HEADER,
     })

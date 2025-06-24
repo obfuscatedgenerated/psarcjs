@@ -11,7 +11,7 @@ const sharp = require('sharp');
 */
 
 export const HEADER = new Parser()
-    .endianess("little")
+    .endianness("little")
     .string("MAGIC", {
         encoding: "ascii",
         zeroTerminated: false,

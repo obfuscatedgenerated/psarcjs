@@ -36,12 +36,13 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.getRandomInt = exports.generate = exports.BNKDATA = exports.STID = exports.HIERARCHY = exports.HIRCEVENT = exports.HIRCACTION = exports.HIRCACTORMIXER = exports.HIRCSOUND = exports.DATA = exports.DIDX = exports.HEADER = void 0;
 var binary_parser_1 = require("binary-parser");
 var fs_1 = require("fs");
 var path_1 = require("path");
 var fs_extra_1 = require("fs-extra");
 exports.HEADER = new binary_parser_1.Parser()
-    .endianess("little")
+    .endianness("little")
     .string("magic", {
     length: 4,
 })
@@ -54,7 +55,7 @@ exports.HEADER = new binary_parser_1.Parser()
     length: 12,
 });
 exports.DIDX = new binary_parser_1.Parser()
-    .endianess("little")
+    .endianness("little")
     .string("magic", {
     length: 4,
 })
@@ -63,7 +64,7 @@ exports.DIDX = new binary_parser_1.Parser()
     .int32("fileOffset")
     .int32("fileSize");
 exports.DATA = new binary_parser_1.Parser()
-    .endianess("little")
+    .endianness("little")
     .string("magic", {
     length: 4,
 })
@@ -72,7 +73,7 @@ exports.DATA = new binary_parser_1.Parser()
     length: "chunkSize"
 });
 exports.HIRCSOUND = new binary_parser_1.Parser()
-    .endianess("little")
+    .endianness("little")
     .uint32("soundID")
     .uint32("pluginID")
     .uint32("streamType")
@@ -113,7 +114,7 @@ exports.HIRCSOUND = new binary_parser_1.Parser()
     .int16("rtpcList")
     .int32("feedbackBus");
 exports.HIRCACTORMIXER = new binary_parser_1.Parser()
-    .endianess("little")
+    .endianness("little")
     .uint32("mixerID")
     .int8("overrideParent")
     .int8("numFX")
@@ -143,7 +144,7 @@ exports.HIRCACTORMIXER = new binary_parser_1.Parser()
     .int32("numchild")
     .int32("child1");
 exports.HIRCACTION = new binary_parser_1.Parser()
-    .endianess("little")
+    .endianness("little")
     .int32("actionID")
     .int16("actionType")
     .int32("objectID")
@@ -153,12 +154,12 @@ exports.HIRCACTION = new binary_parser_1.Parser()
     .int8("fadeCurve")
     .int32("soundbankID");
 exports.HIRCEVENT = new binary_parser_1.Parser()
-    .endianess("little")
+    .endianness("little")
     .int32("eventID")
     .int32("numEvents")
     .int32("actionID");
 exports.HIERARCHY = new binary_parser_1.Parser()
-    .endianess("little")
+    .endianness("little")
     .string("magic", {
     length: 4,
 })
@@ -185,7 +186,7 @@ exports.HIERARCHY = new binary_parser_1.Parser()
     type: exports.HIRCEVENT,
 });
 exports.STID = new binary_parser_1.Parser()
-    .endianess("little")
+    .endianness("little")
     .string("magic", {
     length: 4,
 })
@@ -199,7 +200,7 @@ exports.STID = new binary_parser_1.Parser()
     encoding: "ascii"
 });
 exports.BNKDATA = new binary_parser_1.Parser()
-    .endianess("little")
+    .endianness("little")
     .nest("header", {
     type: exports.HEADER,
 })

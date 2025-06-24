@@ -23,7 +23,7 @@ function addPackets() {
             );
             if (packet.packetno >= 3) {
                 const h = new Parser()
-                    .endianess("little")
+                    .endianness("little")
                     .bit8("packet_type")
                     .buffer("rest", {
                         readUntil: "eof",
@@ -34,7 +34,7 @@ function addPackets() {
         stream.on('page', function (page) {
             //console.log('got "page": ', page.serialno, page.packets);
             const p = new Parser()
-                .endianess("little")
+                .endianness("little")
                 .buffer("data", {
                     readUntil: "eof"
                 })

@@ -9,7 +9,7 @@
     "drypack": "npm pack && tar -xvzf *.tgz && rm -rf package *.tgz",
     "cover": "python3 test/sng/generate-sng-json.py && c8 --reporter=lcov mocha -r ts-node/register --reporter spec test/*.ts",
     "postcover": "rm -rf test/xml/*.sng && rm -rf test/sng/*.sng.json",
-    "build": "rm -rf dist/ && tsc --build --pretty"
+    "build": "tsc --build --pretty"
   },
   "repository": {
     "type": "git",
@@ -50,6 +50,7 @@
     "@types/chai-arrays": "^1.0.3",
     "@types/chai-fs": "^2.0.2",
     "@types/fs-extra": "^8.0.1",
+    "@types/imagemagick": "^0.0.35",
     "@types/mocha": "^5.2.7",
     "@types/mocha-each": "^1.1.0",
     "@types/node": "^12.12.17",

@@ -10,6 +10,25 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -66,14 +85,8 @@ var __spread = (this && this.__spread) || function () {
     for (var ar = [], i = 0; i < arguments.length; i++) ar = ar.concat(__read(arguments[i]));
     return ar;
 };
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-    result["default"] = mod;
-    return result;
-};
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Vocals = exports.ShowLights = exports.ManifestReplacer = exports.ManifestToneReviver = exports.VocalArrangement = exports.VocalAttributesHeader = exports.VocalAttributes = exports.Arrangement = exports.Attributes = exports.AttributesHeader = exports.DNAId = exports.RouteMask = exports.ArrangementType = exports.ArrangementTypeInt = exports.Platform = void 0;
 var fs_1 = require("fs");
 var xml2js = __importStar(require("xml2js"));
 var path_1 = require("path");
@@ -229,7 +242,7 @@ var Arrangement = /** @class */ (function () {
         this.main.arrangementType = ArrangementTypeInt[song.arrangement.toUpperCase()];
         this.header.arrangementName = common_1.toTitleCase(song.arrangement);
         var masterID = this.main.arrangementType == ArrangementTypeInt.VOCALS ? -1 : bnkparser_1.getRandomInt();
-        var pID = (_b = (_a = options.info) === null || _a === void 0 ? void 0 : _a.persistentID, (_b !== null && _b !== void 0 ? _b : aggregategraphwriter_1.getUuid().replace(/-/g, "").toUpperCase()));
+        var pID = (_b = (_a = options.info) === null || _a === void 0 ? void 0 : _a.persistentID) !== null && _b !== void 0 ? _b : aggregategraphwriter_1.getUuid().replace(/-/g, "").toUpperCase();
         var dlcName = options.tag.toLowerCase();
         var xblockUrn = URN_TEMPLATE_SHORT(aggregategraphwriter_1.TagValue.EmergentWorld, dlcName);
         var showlightUrn = URN_TEMPLATE(aggregategraphwriter_1.TagValue.Application, aggregategraphwriter_1.TagValue.XML, dlcName + "_showlights");
@@ -273,9 +286,9 @@ var Arrangement = /** @class */ (function () {
         this.header.centOffset = song.centOffset;
         this.header.artistNameSort = song.artistNameSort;
         this.header.capoFret = song.capo;
-        this.header.dnaChords = (_e = (_d = (_c = sng.sng) === null || _c === void 0 ? void 0 : _c.dna) === null || _d === void 0 ? void 0 : _d.filter(function (item) { return item.id === DNAId.Chord; }).length, (_e !== null && _e !== void 0 ? _e : 0));
-        this.header.dnaRiffs = (_h = (_g = (_f = sng.sng) === null || _f === void 0 ? void 0 : _f.dna) === null || _g === void 0 ? void 0 : _g.filter(function (item) { return item.id === DNAId.Riff; }).length, (_h !== null && _h !== void 0 ? _h : 0));
-        this.header.dnaSolo = (_l = (_k = (_j = sng.sng) === null || _j === void 0 ? void 0 : _j.dna) === null || _k === void 0 ? void 0 : _k.filter(function (item) { return item.id === DNAId.Solo; }).length, (_l !== null && _l !== void 0 ? _l : 0));
+        this.header.dnaChords = (_e = (_d = (_c = sng.sng) === null || _c === void 0 ? void 0 : _c.dna) === null || _d === void 0 ? void 0 : _d.filter(function (item) { return item.id === DNAId.Chord; }).length) !== null && _e !== void 0 ? _e : 0;
+        this.header.dnaRiffs = (_h = (_g = (_f = sng.sng) === null || _f === void 0 ? void 0 : _f.dna) === null || _g === void 0 ? void 0 : _g.filter(function (item) { return item.id === DNAId.Riff; }).length) !== null && _h !== void 0 ? _h : 0;
+        this.header.dnaSolo = (_l = (_k = (_j = sng.sng) === null || _j === void 0 ? void 0 : _j.dna) === null || _k === void 0 ? void 0 : _k.filter(function (item) { return item.id === DNAId.Solo; }).length) !== null && _l !== void 0 ? _l : 0;
         this.header.notesEasy = sng.sng && sng.sng.phraseIterations && sng.sng.levels ? sng_2.getNoteCount(sng.sng.phraseIterations, sng.sng.levels, 0) : 0;
         this.header.notesMedium = sng.sng && sng.sng.phraseIterations && sng.sng.levels ? sng_2.getNoteCount(sng.sng.phraseIterations, sng.sng.levels, 1) : 0;
         this.header.notesHard = sng.sng && sng.sng.phraseIterations && sng.sng.levels ? sng_2.getNoteCount(sng.sng.phraseIterations, sng.sng.levels, 2) : 0;
@@ -304,7 +317,7 @@ var Arrangement = /** @class */ (function () {
         this.header.songLength = song.songLength;
         this.header.songName = options.info ? options.info.songName : song.title;
         this.header.songNameSort = options.info ? options.info.songName.replace(/[^a-z0-9 ]/gi, '') : song.title;
-        this.header.songYear = (_o = (_m = options.info) === null || _m === void 0 ? void 0 : _m.year, (_o !== null && _o !== void 0 ? _o : parseInt(song.albumYear, 0)));
+        this.header.songYear = (_o = (_m = options.info) === null || _m === void 0 ? void 0 : _m.year) !== null && _o !== void 0 ? _o : parseInt(song.albumYear, 0);
         this.header.tuning = song.tuning;
         this.main.arrangementProperties.pathLead = (this.header.routeMask == RouteMask.Lead) ? 1 : 0;
         this.main.arrangementProperties.pathRhythm = (this.header.routeMask == RouteMask.Rhythm) ? 1 : 0;
@@ -330,7 +343,7 @@ var Arrangement = /** @class */ (function () {
         this.main.chordTemplates = this.getChordTemplates();
         this.main.chords = this.getChords();
         this.main.techniques = this.getTechniques();
-        this.main.dynamicVisualDensity = this.getDynamicDesnity((_q = (_p = options.info) === null || _p === void 0 ? void 0 : _p.scrollSpeed, (_q !== null && _q !== void 0 ? _q : 20)));
+        this.main.dynamicVisualDensity = this.getDynamicDesnity((_q = (_p = options.info) === null || _p === void 0 ? void 0 : _p.scrollSpeed) !== null && _q !== void 0 ? _q : 20);
         var tret = this.getTones(options.tones);
         this.main.tones = tret.tones;
         this.main.tone_A = tret.tonea;
@@ -752,7 +765,7 @@ var VocalArrangement = /** @class */ (function () {
         this.header = new VocalAttributesHeader();
         this.main = new VocalAttributes();
         var masterID = bnkparser_1.getRandomInt();
-        var pID = (_b = (_a = options.info) === null || _a === void 0 ? void 0 : _a.persistentID, (_b !== null && _b !== void 0 ? _b : aggregategraphwriter_1.getUuid().replace(/-/g, "").toUpperCase()));
+        var pID = (_b = (_a = options.info) === null || _a === void 0 ? void 0 : _a.persistentID) !== null && _b !== void 0 ? _b : aggregategraphwriter_1.getUuid().replace(/-/g, "").toUpperCase();
         var dlcName = options.tag.toLowerCase();
         var xblockUrn = URN_TEMPLATE_SHORT(aggregategraphwriter_1.TagValue.EmergentWorld, dlcName);
         var showlightUrn = URN_TEMPLATE(aggregategraphwriter_1.TagValue.Application, aggregategraphwriter_1.TagValue.XML, dlcName + "_showlights");

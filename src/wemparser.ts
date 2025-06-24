@@ -1,7 +1,7 @@
 import { Parser } from 'binary-parser';
 
 export const HEADER = new Parser()
-    .endianess("little")
+    .endianness("little")
     .string("magic", {
         length: 4,
         assert: 'RIFF',
@@ -13,14 +13,14 @@ export const HEADER = new Parser()
     })
 
 export const DATA = new Parser()
-    .endianess("little")
+    .endianness("little")
 
 
 export const PACKET = new Parser()
-    .endianess("little")
+    .endianness("little")
     .int16("packet_size")
     .nest("first", {
-        type: new Parser().endianess("little")
+        type: new Parser().endianness("little")
             .bit1("mode_number").bit7("remainder")
     })
     //.int32("first")
@@ -32,7 +32,7 @@ export const PACKET = new Parser()
     })
 
 export const SETUPPACKET = new Parser()
-    .endianess("little")
+    .endianness("little")
     .bit8("codebook_count")
     .buffer("codebook_ids", {
         length: function () {
@@ -41,7 +41,7 @@ export const SETUPPACKET = new Parser()
     })
 
 export const FORMAT = new Parser()
-    .endianess("little")
+    .endianness("little")
     .string("fmtMagic", {
         length: 4,
         assert: 'fmt ',
@@ -106,7 +106,7 @@ export const FORMAT = new Parser()
 
 
 export const WEMDATA: Parser<any> = new Parser()
-    .endianess("little")
+    .endianness("little")
     .nest("header", {
         type: HEADER,
     })

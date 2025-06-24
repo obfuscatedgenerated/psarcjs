@@ -16,7 +16,7 @@ function addPackets() {
             console.log('got "packet":', "bytes", packet.bytes, "no", packet.packetno, "b_o_s", packet.b_o_s, "e_o_s", packet.e_o_s, "granulepos", packet.granulepos);
             if (packet.packetno >= 3) {
                 var h = new Parser()
-                    .endianess("little")
+                    .endianness("little")
                     .bit8("packet_type")
                     .buffer("rest", {
                     readUntil: "eof",
@@ -27,7 +27,7 @@ function addPackets() {
         stream.on('page', function (page) {
             //console.log('got "page": ', page.serialno, page.packets);
             var p = new Parser()
-                .endianess("little")
+                .endianness("little")
                 .buffer("data", {
                 readUntil: "eof"
             });

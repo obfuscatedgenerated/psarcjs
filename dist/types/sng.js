@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.getNoteCount = exports.getChordNotesDict = exports.getChordNotes = exports.LEVELS = exports.FPW = exports.NOTES = exports.METADATA = exports.SECTIONS = exports.DNA = exports.TONE = exports.EVENTS = exports.NEWLINKEDDIFFS = exports.PHRASEITERATIONS = exports.CHORDNOTES = exports.VOCALS = exports.CHORDTEMPLATES = exports.PHRASES = exports.BEATS = exports.BENDS = exports.BEND = void 0;
 var CRC32 = require('js-crc32'); // uncomment this line if in node
 var song2014_1 = require("../song2014");
 var constants_1 = require("./constants");
@@ -560,8 +561,8 @@ var LEVELS = /** @class */ (function () {
                 }
                 if (note.slideTo && note.slideTo != -1) {
                     var ae = {
-                        fret: (_a = note.slideTo, (_a !== null && _a !== void 0 ? _a : 0)),
-                        time: note.time + (_b = note.sustain, (_b !== null && _b !== void 0 ? _b : 0)),
+                        fret: (_a = note.slideTo) !== null && _a !== void 0 ? _a : 0,
+                        time: note.time + ((_b = note.sustain) !== null && _b !== void 0 ? _b : 0),
                     };
                     anchorExts[acent++] = ae;
                 }
@@ -860,20 +861,20 @@ function parseNote(pi, note, n, prev) {
     n.nextIterNote = INT16_MAX;
     n.prevIterNote = INT16_MAX;
     n.parentPrevNote = INT16_MAX;
-    n.slideTo = (_a = note.slideTo, (_a !== null && _a !== void 0 ? _a : -1));
-    n.slideUnpitchTo = (_b = note.slideUnpitchTo, (_b !== null && _b !== void 0 ? _b : -1));
-    n.leftHand = (_c = note.leftHand, (_c !== null && _c !== void 0 ? _c : -1));
+    n.slideTo = (_a = note.slideTo) !== null && _a !== void 0 ? _a : -1;
+    n.slideUnpitchTo = (_b = note.slideUnpitchTo) !== null && _b !== void 0 ? _b : -1;
+    n.leftHand = (_c = note.leftHand) !== null && _c !== void 0 ? _c : -1;
     // 'bvibrato' and 'rchords8' are using 0 value but without TAP mask
     if (note.tap != 0)
-        n.tap = (_d = note.tap, (_d !== null && _d !== void 0 ? _d : -1));
+        n.tap = (_d = note.tap) !== null && _d !== void 0 ? _d : -1;
     else
         n.tap = -1;
-    n.pickDirection = (_e = note.pickDirection, (_e !== null && _e !== void 0 ? _e : 0));
-    n.slap = (_f = note.slap, (_f !== null && _f !== void 0 ? _f : -1));
-    n.pluck = (_g = note.pluck, (_g !== null && _g !== void 0 ? _g : -1));
-    n.vibrato = (_h = note.vibrato, (_h !== null && _h !== void 0 ? _h : 0));
-    n.sustain = (_j = note.sustain, (_j !== null && _j !== void 0 ? _j : 0));
-    n.maxBend = (_k = note.bend, (_k !== null && _k !== void 0 ? _k : 0));
+    n.pickDirection = (_e = note.pickDirection) !== null && _e !== void 0 ? _e : 0;
+    n.slap = (_f = note.slap) !== null && _f !== void 0 ? _f : -1;
+    n.pluck = (_g = note.pluck) !== null && _g !== void 0 ? _g : -1;
+    n.vibrato = (_h = note.vibrato) !== null && _h !== void 0 ? _h : 0;
+    n.sustain = (_j = note.sustain) !== null && _j !== void 0 ? _j : 0;
+    n.maxBend = (_k = note.bend) !== null && _k !== void 0 ? _k : 0;
     var b = parseBendData(note, true);
     n.bend_length = b.count;
     n.bends = b.bendValues;
@@ -982,15 +983,15 @@ function addChordNotes(chord) {
         //if (n != null && n.bendValues != null)
         //    c.bends[i].bendValues[i].usedCount = n.bendValues.length;
         if (n != null) {
-            c.slideTo[i] = (_a = n.slideTo, (_a !== null && _a !== void 0 ? _a : -1));
-            c.slideUnpitchTo[i] = (_b = n.slideUnpitchTo, (_b !== null && _b !== void 0 ? _b : -1));
+            c.slideTo[i] = (_a = n.slideTo) !== null && _a !== void 0 ? _a : -1;
+            c.slideUnpitchTo[i] = (_b = n.slideUnpitchTo) !== null && _b !== void 0 ? _b : -1;
         }
         else {
             c.slideTo[i] = -1;
             c.slideUnpitchTo[i] = -1;
         }
         if (n != null)
-            c.vibrato[i] = (_c = n.vibrato, (_c !== null && _c !== void 0 ? _c : 0));
+            c.vibrato[i] = (_c = n.vibrato) !== null && _c !== void 0 ? _c : 0;
     }
     var buf = sngparser_1.CHORDNOTESDATA.encode(c);
     var crc = CRC32.buf(buf);

@@ -9,6 +9,7 @@ var generic_1 = require("./generic");
 var manifest_1 = require("./manifest");
 var psarc_1 = require("./psarc");
 var song2014_1 = require("./song2014");
+var common_1 = require("./common");
 module.exports = {
     PSARC: psarc_1.PSARC,
     SNG: sng_1.SNG,
@@ -21,4 +22,5 @@ module.exports = {
     SongEbeat: song2014_1.SongEbeat,
     SongNote: song2014_1.SongNote,
     MANIFEST: manifest_1.MANIFEST,
+    DEFAULT_VALUES: common_1.DEFAULT_VALUES,
 };

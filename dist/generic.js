@@ -1,4 +1,23 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -35,14 +54,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-    result["default"] = mod;
-    return result;
-};
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.GENERIC = void 0;
 var fs_1 = require("fs");
 var path_1 = require("path");
 var xml2js = __importStar(require("xml2js"));
@@ -156,7 +169,7 @@ var GENERIC = /** @class */ (function () {
                                 $: {
                                     id: (_a = item.header) === null || _a === void 0 ? void 0 : _a.persistentID.toLowerCase(),
                                     modelName: "RSEnumerable_Song",
-                                    name: tag + "_" + common_1.toTitleCase((_c = (_b = item.header) === null || _b === void 0 ? void 0 : _b.arrangementName.toLowerCase(), (_c !== null && _c !== void 0 ? _c : ''))),
+                                    name: tag + "_" + common_1.toTitleCase((_c = (_b = item.header) === null || _b === void 0 ? void 0 : _b.arrangementName.toLowerCase()) !== null && _c !== void 0 ? _c : ''),
                                     iterations: 0,
                                 },
                                 properties: {

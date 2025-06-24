@@ -10,7 +10,7 @@ import {
 } from "./types/common";
 
 const packedParser = (len: number): Parser<SNGTypes.PackedSNG> => new Parser()
-    .endianess("little")
+    .endianness("little")
     .int32("magic")
     .int32("platformHeader")
     .buffer("iv", {
@@ -56,7 +56,7 @@ export class SNG {
             const compressed = await PSARCParser.zip(this.unpackedData);
             await PSARCParser.unzip(compressed);
             const q: Parser<SNGTypes.UnpackedSNG> = new Parser()
-                .endianess("little")
+                .endianness("little")
                 .uint32("uncompressedLength")
                 .buffer("compressedData", {
                     length: compressed.length,

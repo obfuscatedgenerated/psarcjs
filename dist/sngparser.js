@@ -1,15 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.SNGDATA = exports.METADATADATA = exports.LEVELSDATA = exports.ANCHORSDATA = exports.ANCHOREXTENSIONSDATA = exports.FINGERPRINTARRDATA = exports.FINGERPRINTDATA = exports.NOTESDATA = exports.SECTIONDATA = exports.TONEDATA = exports.ACTIONSDATA = exports.NEWLINKEDDIFFSDATA = exports.PHRASEEXTRAINFOSDATA = exports.PHRASEITERATIONSDATA = exports.SYMBOLSDATA = exports.DEFINITIONDATA = exports.RECTDATA = exports.TEXTUREDATA = exports.HEADERARRAYDATA = exports.VOCALSDATA = exports.CHORDNOTESDATA = exports.BENDSDATA = exports.BENDDATA = exports.CHORDTEMPLATESDATA = exports.PHRASEDATA = exports.BEATSDATA = void 0;
 var binary_parser_1 = require("binary-parser");
 exports.BEATSDATA = new binary_parser_1.Parser()
-    .endianess("little")
+    .endianness("little")
     .floatle("time")
     .uint16("measure")
     .uint16("beat")
     .uint32("phraseIteration")
     .uint32("mask");
 exports.PHRASEDATA = new binary_parser_1.Parser()
-    .endianess("little")
+    .endianness("little")
     .int8("solo")
     .int8("disparity")
     .int8("ignore")
@@ -22,7 +23,7 @@ exports.PHRASEDATA = new binary_parser_1.Parser()
     stripNull: true,
 });
 exports.CHORDTEMPLATESDATA = new binary_parser_1.Parser()
-    .endianess("little")
+    .endianness("little")
     .uint32("mask")
     .array("frets", {
     length: 6,
@@ -42,20 +43,20 @@ exports.CHORDTEMPLATESDATA = new binary_parser_1.Parser()
     stripNull: true,
 });
 exports.BENDDATA = new binary_parser_1.Parser()
-    .endianess("little")
+    .endianness("little")
     .floatle("time")
     .floatle("step")
     .skip(3)
     .int8("UNK");
 exports.BENDSDATA = new binary_parser_1.Parser()
-    .endianess("little")
+    .endianness("little")
     .array("bendValues", {
     length: 32,
     type: exports.BENDDATA,
 })
     .uint32("count");
 exports.CHORDNOTESDATA = new binary_parser_1.Parser()
-    .endianess("little")
+    .endianness("little")
     .array("mask", {
     length: 6,
     type: "int32le"
@@ -77,7 +78,7 @@ exports.CHORDNOTESDATA = new binary_parser_1.Parser()
     type: "int16le"
 });
 exports.VOCALSDATA = new binary_parser_1.Parser()
-    .endianess("little")
+    .endianness("little")
     .floatle("time")
     .int32("note")
     .floatle("length")
@@ -87,13 +88,13 @@ exports.VOCALSDATA = new binary_parser_1.Parser()
     stripNull: true,
 });
 exports.HEADERARRAYDATA = new binary_parser_1.Parser()
-    .endianess("little")
+    .endianness("little")
     .array("item", {
     type: "int32le",
     length: 8,
 });
 exports.TEXTUREDATA = new binary_parser_1.Parser()
-    .endianess("little")
+    .endianness("little")
     .string("fontpath", {
     encoding: 'ascii',
     length: 128,
@@ -104,13 +105,13 @@ exports.TEXTUREDATA = new binary_parser_1.Parser()
     .int32("width")
     .int32("height");
 exports.RECTDATA = new binary_parser_1.Parser()
-    .endianess("little")
+    .endianness("little")
     .floatle("y0")
     .floatle("x0")
     .floatle("y1")
     .floatle("x1");
 exports.DEFINITIONDATA = new binary_parser_1.Parser()
-    .endianess("little")
+    .endianness("little")
     .string("name", {
     encoding: 'utf-8',
     length: 12,
@@ -123,7 +124,7 @@ exports.DEFINITIONDATA = new binary_parser_1.Parser()
     type: exports.RECTDATA,
 });
 exports.SYMBOLSDATA = new binary_parser_1.Parser()
-    .endianess("little")
+    .endianness("little")
     .uint32("ha_length")
     .array("header", {
     type: exports.HEADERARRAYDATA,
@@ -140,7 +141,7 @@ exports.SYMBOLSDATA = new binary_parser_1.Parser()
     length: "def_length"
 });
 exports.PHRASEITERATIONSDATA = new binary_parser_1.Parser()
-    .endianess("little")
+    .endianness("little")
     .uint32("phraseId")
     .floatle("startTime")
     .floatle("nextPhraseTime")
@@ -149,7 +150,7 @@ exports.PHRASEITERATIONSDATA = new binary_parser_1.Parser()
     length: 3
 });
 exports.PHRASEEXTRAINFOSDATA = new binary_parser_1.Parser()
-    .endianess("little")
+    .endianness("little")
     .uint32("phraseId")
     .uint32("difficulty")
     .uint32("empty")
@@ -157,7 +158,7 @@ exports.PHRASEEXTRAINFOSDATA = new binary_parser_1.Parser()
     .int16le("redundant")
     .skip(1);
 exports.NEWLINKEDDIFFSDATA = new binary_parser_1.Parser()
-    .endianess("little")
+    .endianness("little")
     .int32le("levelBreak")
     .uint32("nld_phrase_length")
     .array("nld_phrase", {
@@ -165,7 +166,7 @@ exports.NEWLINKEDDIFFSDATA = new binary_parser_1.Parser()
     length: "nld_phrase_length"
 });
 exports.ACTIONSDATA = new binary_parser_1.Parser()
-    .endianess("little")
+    .endianness("little")
     .floatle("time")
     .string("name", {
     encoding: 'ascii',
@@ -173,11 +174,11 @@ exports.ACTIONSDATA = new binary_parser_1.Parser()
     stripNull: true,
 });
 exports.TONEDATA = new binary_parser_1.Parser()
-    .endianess("little")
+    .endianness("little")
     .floatle("time")
     .uint32("id");
 exports.SECTIONDATA = new binary_parser_1.Parser()
-    .endianess("little")
+    .endianness("little")
     .string("name", {
     encoding: 'utf-8',
     length: 32,
@@ -193,7 +194,7 @@ exports.SECTIONDATA = new binary_parser_1.Parser()
     length: 36,
 });
 exports.NOTESDATA = new binary_parser_1.Parser()
-    .endianess("little")
+    .endianness("little")
     .uint32("mask")
     .uint32("flags")
     .uint32("hash")
@@ -229,26 +230,26 @@ exports.NOTESDATA = new binary_parser_1.Parser()
     length: "bend_length"
 });
 exports.FINGERPRINTDATA = new binary_parser_1.Parser()
-    .endianess("little")
+    .endianness("little")
     .uint32("chordId")
     .floatle("startTime")
     .floatle("endTime")
     .floatle("UNK_startTime")
     .floatle("UNK_endTime");
 exports.FINGERPRINTARRDATA = new binary_parser_1.Parser()
-    .endianess("little")
+    .endianness("little")
     .uint32("item0_length")
     .array("I0", {
     type: exports.FINGERPRINTDATA,
     length: "item0_length"
 });
 exports.ANCHOREXTENSIONSDATA = new binary_parser_1.Parser()
-    .endianess("little")
+    .endianness("little")
     .floatle("time")
     .int8("fret")
     .skip(7);
 exports.ANCHORSDATA = new binary_parser_1.Parser()
-    .endianess("little")
+    .endianness("little")
     .floatle("time")
     .floatle("endTime")
     .floatle("UNK_time")
@@ -256,8 +257,9 @@ exports.ANCHORSDATA = new binary_parser_1.Parser()
     .int32("fret")
     .int32("width")
     .int32("phraseIterationId");
+/* @ts-ignore TODO fix this properly */
 exports.LEVELSDATA = new binary_parser_1.Parser()
-    .endianess("little")
+    .endianness("little")
     .uint32("difficulty")
     .uint32("anchors_length")
     .array("anchors", {
@@ -294,7 +296,7 @@ exports.LEVELSDATA = new binary_parser_1.Parser()
     length: "niic_length"
 });
 exports.METADATADATA = new binary_parser_1.Parser()
-    .endianess("little")
+    .endianness("little")
     .doublele("maxScores")
     .doublele("maxNotesAndChords")
     .doublele("maxNotesAndChords_Real")
@@ -317,8 +319,9 @@ exports.METADATADATA = new binary_parser_1.Parser()
     .floatle("firstNoteTime")
     .floatle("firstNoteTime2")
     .int32le("maxDifficulty");
+/* @ts-ignore TODO fix this properly */
 exports.SNGDATA = new binary_parser_1.Parser()
-    .endianess("little")
+    .endianness("little")
     .uint32("beats_length")
     .array("beats", {
     type: exports.BEATSDATA,

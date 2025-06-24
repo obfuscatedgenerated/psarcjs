@@ -5,7 +5,7 @@ import {
 } from './types/sng';
 
 export const BEATSDATA: Parser<BEATS> = new Parser()
-    .endianess("little")
+    .endianness("little")
     .floatle("time")
     .uint16("measure")
     .uint16("beat")
@@ -13,7 +13,7 @@ export const BEATSDATA: Parser<BEATS> = new Parser()
     .uint32("mask");
 
 export const PHRASEDATA: Parser<PHRASES> = new Parser()
-    .endianess("little")
+    .endianness("little")
     .int8("solo")
     .int8("disparity")
     .int8("ignore")
@@ -27,7 +27,7 @@ export const PHRASEDATA: Parser<PHRASES> = new Parser()
     })
 
 export const CHORDTEMPLATESDATA: Parser<CHORDTEMPLATES> = new Parser()
-    .endianess("little")
+    .endianness("little")
     .uint32("mask")
     .array("frets", {
         length: 6,
@@ -48,14 +48,14 @@ export const CHORDTEMPLATESDATA: Parser<CHORDTEMPLATES> = new Parser()
     })
 
 export const BENDDATA: Parser<BEND> = new Parser()
-    .endianess("little")
+    .endianness("little")
     .floatle("time")
     .floatle("step")
     .skip(3)
     .int8("UNK")
 
 export const BENDSDATA: Parser<BENDS> = new Parser()
-    .endianess("little")
+    .endianness("little")
     .array("bendValues", {
         length: 32,
         type: BENDDATA,
@@ -63,7 +63,7 @@ export const BENDSDATA: Parser<BENDS> = new Parser()
     .uint32("count")
 
 export const CHORDNOTESDATA: Parser<CHORDNOTES> = new Parser()
-    .endianess("little")
+    .endianness("little")
     .array("mask", {
         length: 6,
         type: "int32le"
@@ -86,7 +86,7 @@ export const CHORDNOTESDATA: Parser<CHORDNOTES> = new Parser()
     })
 
 export const VOCALSDATA: Parser<VOCALS> = new Parser()
-    .endianess("little")
+    .endianness("little")
     .floatle("time")
     .int32("note")
     .floatle("length")
@@ -97,14 +97,14 @@ export const VOCALSDATA: Parser<VOCALS> = new Parser()
     })
 
 export const HEADERARRAYDATA = new Parser()
-    .endianess("little")
+    .endianness("little")
     .array("item", {
         type: "int32le",
         length: 8,
     })
 
 export const TEXTUREDATA: Parser<TEXTURE> = new Parser()
-    .endianess("little")
+    .endianness("little")
     .string("fontpath", {
         encoding: 'ascii',
         length: 128,
@@ -116,14 +116,14 @@ export const TEXTUREDATA: Parser<TEXTURE> = new Parser()
     .int32("height");
 
 export const RECTDATA: Parser<RECT> = new Parser()
-    .endianess("little")
+    .endianness("little")
     .floatle("y0")
     .floatle("x0")
     .floatle("y1")
     .floatle("x1")
 
 export const DEFINITIONDATA: Parser<DEFINITION> = new Parser()
-    .endianess("little")
+    .endianness("little")
     .string("name", {
         encoding: 'utf-8',
         length: 12,
@@ -137,7 +137,7 @@ export const DEFINITIONDATA: Parser<DEFINITION> = new Parser()
     })
 
 export const SYMBOLSDATA: Parser<SYMBOLS> = new Parser()
-    .endianess("little")
+    .endianness("little")
     .uint32("ha_length")
     .array("header", {
         type: HEADERARRAYDATA,
@@ -155,7 +155,7 @@ export const SYMBOLSDATA: Parser<SYMBOLS> = new Parser()
     })
 
 export const PHRASEITERATIONSDATA: Parser<PHRASEITERATIONS> = new Parser()
-    .endianess("little")
+    .endianness("little")
     .uint32("phraseId")
     .floatle("startTime")
     .floatle("nextPhraseTime")
@@ -165,7 +165,7 @@ export const PHRASEITERATIONSDATA: Parser<PHRASEITERATIONS> = new Parser()
     })
 
 export const PHRASEEXTRAINFOSDATA: Parser<PHRASEEXTRAINFOS> = new Parser()
-    .endianess("little")
+    .endianness("little")
     .uint32("phraseId")
     .uint32("difficulty")
     .uint32("empty")
@@ -174,7 +174,7 @@ export const PHRASEEXTRAINFOSDATA: Parser<PHRASEEXTRAINFOS> = new Parser()
     .skip(1)
 
 export const NEWLINKEDDIFFSDATA: Parser<NEWLINKEDDIFFS> = new Parser()
-    .endianess("little")
+    .endianness("little")
     .int32le("levelBreak")
     .uint32("nld_phrase_length")
     .array("nld_phrase", {
@@ -182,7 +182,7 @@ export const NEWLINKEDDIFFSDATA: Parser<NEWLINKEDDIFFS> = new Parser()
         length: "nld_phrase_length"
     })
 export const ACTIONSDATA: Parser<ACTIONS> = new Parser()
-    .endianess("little")
+    .endianness("little")
     .floatle("time")
     .string("name", {
         encoding: 'ascii',
@@ -190,12 +190,12 @@ export const ACTIONSDATA: Parser<ACTIONS> = new Parser()
         stripNull: true,
     })
 export const TONEDATA: Parser<TONE> = new Parser()
-    .endianess("little")
+    .endianness("little")
     .floatle("time")
     .uint32("id")
 
 export const SECTIONDATA: Parser<SECTIONS> = new Parser()
-    .endianess("little")
+    .endianness("little")
     .string("name", {
         encoding: 'utf-8',
         length: 32,
@@ -211,7 +211,7 @@ export const SECTIONDATA: Parser<SECTIONS> = new Parser()
         length: 36,
     })
 export const NOTESDATA: Parser<NOTES> = new Parser()
-    .endianess("little")
+    .endianness("little")
     .uint32("mask")
     .uint32("flags")
     .uint32("hash")
@@ -247,7 +247,7 @@ export const NOTESDATA: Parser<NOTES> = new Parser()
         length: "bend_length"
     })
 export const FINGERPRINTDATA: Parser<FINGERPRINTS> = new Parser()
-    .endianess("little")
+    .endianness("little")
     .uint32("chordId")
     .floatle("startTime")
     .floatle("endTime")
@@ -255,20 +255,20 @@ export const FINGERPRINTDATA: Parser<FINGERPRINTS> = new Parser()
     .floatle("UNK_endTime")
 
 export const FINGERPRINTARRDATA = new Parser()
-    .endianess("little")
+    .endianness("little")
     .uint32("item0_length")
     .array("I0", {
         type: FINGERPRINTDATA,
         length: "item0_length"
     })
 export const ANCHOREXTENSIONSDATA: Parser<ANCHOREXTENSIONS> = new Parser()
-    .endianess("little")
+    .endianness("little")
     .floatle("time")
     .int8("fret")
     .skip(7)
 
 export const ANCHORSDATA: Parser<ANCHORS> = new Parser()
-    .endianess("little")
+    .endianness("little")
     .floatle("time")
     .floatle("endTime")
     .floatle("UNK_time")
@@ -278,8 +278,9 @@ export const ANCHORSDATA: Parser<ANCHORS> = new Parser()
     .int32("phraseIterationId")
 
 
+/* @ts-ignore TODO fix this properly */
 export const LEVELSDATA: Parser<Partial<LEVELS>> = new Parser()
-    .endianess("little")
+    .endianness("little")
     .uint32("difficulty")
     .uint32("anchors_length")
     .array("anchors", {
@@ -317,7 +318,7 @@ export const LEVELSDATA: Parser<Partial<LEVELS>> = new Parser()
     })
 
 export const METADATADATA: Parser<METADATA> = new Parser()
-    .endianess("little")
+    .endianness("little")
     .doublele("maxScores")
     .doublele("maxNotesAndChords")
     .doublele("maxNotesAndChords_Real")
@@ -341,8 +342,9 @@ export const METADATADATA: Parser<METADATA> = new Parser()
     .floatle("firstNoteTime2")
     .int32le("maxDifficulty")
 
+/* @ts-ignore TODO fix this properly */
 export const SNGDATA: Parser<Partial<SNGFORMAT>> = new Parser()
-    .endianess("little")
+    .endianness("little")
     .uint32("beats_length")
     .array("beats", {
         type: BEATSDATA,
