@@ -33,7 +33,7 @@
   "homepage": "https://github.com/sandiz/psarcjs#readme",
   "dependencies": {
     "aes-js": "^3.1.2",
-    "binary-parser": "git+https://github.com/psarcjs-forks/binary-parser.git",
+    "binary-parser": "github:obfuscatedgenerated/binary-parser",
     "fs-extra": "^8.1.0",
     "globby": "^10.0.1",
     "imagemagick": "^0.1.3",
